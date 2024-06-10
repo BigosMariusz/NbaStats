@@ -48,9 +48,9 @@ namespace MariuszCompany.NbaStats.Api
             builder.Host.UseSerilog((ctx, lc) => lc
                 .ReadFrom.Configuration(ctx.Configuration));
 
-            builder.Services.AddDbContext<NbaDbContext>(op => op.UseSqlServer(builder.Configuration["DbConnectionStrings"]));
+            builder.Services.AddDbContext<NbaDbContext>(op => op.UseSqlServer(builder.Configuration["DbConnectionString"]));
             builder.Services.AddScoped<ISqlConnectionFactory>(provider =>
-                new SqlConnectionFactory(builder.Configuration["DbConnectionStrings"])
+                new SqlConnectionFactory(builder.Configuration["DbConnectionString"])
             );
 
 
